@@ -14,40 +14,40 @@ export default {
     },
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        border: "hsl(0, 0%, 0%)", // Black
+        input: "hsl(0, 0%, 0%)", // Black
+        ring: "hsl(0, 0%, 0%)", // Black
+        background: "hsl(0, 0%, 78%)", // C7C9C9
+        foreground: "hsl(0, 0%, 0%)", // Black
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "hsl(0, 0%, 100%)", // White
+          foreground: "hsl(0, 0%, 0%)", // Black
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "hsl(0, 0%, 100%)", // White
+          foreground: "hsl(0, 0%, 0%)", // Black
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: "hsl(0, 0%, 100%)", // White
+          foreground: "hsl(0, 0%, 0%)", // Black
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "hsl(0, 0%, 100%)", // White
+          foreground: "hsl(0, 0%, 0%)", // Black
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: "hsl(0, 0%, 100%)", // White
+          foreground: "hsl(0, 0%, 0%)", // Black
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: "hsl(0, 0%, 100%)", // White
+          foreground: "hsl(0, 0%, 0%)", // Black
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "hsl(0, 0%, 41%)", // 6A6867
+          foreground: "hsl(0, 0%, 100%)", // White
         },
-        navBorder: "hsl(var(--nav-border))",
+        navBorder: "hsl(0, 0%, 0%)", // Black
       },
       borderRadius: {
         lg: "var(--radius)",

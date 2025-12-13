@@ -3,11 +3,11 @@ import Layout from "@/components/Layout";
 
 // Each company now has its own image. Images are served from `public/`.
 const companies = [
-  { id: 1, name: "UP Business Incubator for IT", image: "/images/up.jpg" },
-  { id: 2, name: "Rivan IT Cebu", image: "/images/rivan.jpg" },
-  { id: 3, name: "Dynata Phillippines INC.", image: "/images/dynata.jpg" },
-  { id: 4, name: "Mata Technologies INC.", image: "/images/mata.jpg" },
-  { id: 5, name: "T.A.R.S.I.E.R 117", image: "/images/tarsier.jpg" },
+  { id: 1, name: "UP Business Incubator for IT", image: "/images/up.PNG" },
+  { id: 2, name: "Rivan IT Cebu", image: "/images/rivan.PNG" },
+  { id: 3, name: "Dynata Phillippines INC.", image: "/images/dynata.PNG" },
+  { id: 4, name: "Mata Technologies INC.", image: "/images/mata.PNG" },
+  { id: 5, name: "T.A.R.S.I.E.R 117", image: "/images/tarsier.PNG" },
 ];
 
 const Journal = () => {
@@ -25,6 +25,7 @@ const Journal = () => {
   return (
     <Layout>
       <div className="max-w-6xl mx-auto px-6 py-12">
+        <h1 className="page-title animate-fade-in">Journals</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
           {companies.map((company, index) => (
             <div
@@ -62,7 +63,7 @@ const Journal = () => {
         >
           <div className="max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
             <button
-              className="mb-4 text-white text-sm px-3 py-1 bg-black/40 rounded-md"
+              className="mb-4 text-sm px-3 py-1 bg-transparent border-b-2 border-transparent hover:border-black"
               onClick={() => setActiveImage(null)}
             >
               Close

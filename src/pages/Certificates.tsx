@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 
 const certificates = [
   { id: 1, name: "Certificate 1", image: "/images/cert.jpg" },
-  { id: 2, name: "Certificate 2", image: "/images/tarcert.jpg" },
 ];
 
 const Certificates = () => {
@@ -51,7 +50,7 @@ const Certificates = () => {
         >
           <div className="max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
             <button
-              className="mb-4 text-white text-sm px-3 py-1 bg-black/40 rounded-md"
+              className="mb-4 text-sm px-3 py-1 bg-transparent border-b-2 border-transparent hover:border-black"
               onClick={() => setActiveImage(null)}
             >
               Close

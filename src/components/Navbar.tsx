@@ -7,7 +7,7 @@ const navItems = [
   { label: "About", to: "/about" },
   { label: "Journal", to: "/journal" },
   { label: "Certificates", to: "/certificates" },
-  { label: "Photos", to: "/photos" },
+  { label: "Gallery", to: "/photos" },
 ];
 
 const Navbar = () => {

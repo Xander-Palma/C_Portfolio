@@ -1,57 +1,19 @@
 import Layout from "@/components/Layout";
 import React, { useEffect, useState } from "react";
 
-// Photo data organized by days - you can add/remove images per day
-const photoDays = [
-  {
-    day: 1,
-    images: [
-      { id: 1, src: "/tour/day1-1.jpg", alt: "Day 1 - Image 1" },
-      { id: 2, src: "/tour/day1-2.jpg", alt: "Day 1 - Image 2" },
-      { id: 3, src: "/tour/day1-3.jpg", alt: "Day 1 - Image 3" },
-      { id: 4, src: "/tour/day1-4.jpg", alt: "Day 1 - Image 4" },
-      { id: 5, src: "/tour/day1-5.jpg", alt: "Day 1 - Image 5" },
-      { id: 6, src: "/tour/day1-6.jpg", alt: "Day 1 - Image 6" },
-      { id: 7, src: "/tour/day1-7.jpg", alt: "Day 1 - Image 7" },
-      { id: 8, src: "/tour/day1-8.jpg", alt: "Day 1 - Image 8" },
-    ],
-  },
-  {
-    day: 2,
-    images: [
-      { id: 1, src: "/tour/day2-1.jpg", alt: "Day 2 - Image 1" },
-      { id: 2, src: "/tour/day2-2.jpg", alt: "Day 2 - Image 2" },
-      { id: 3, src: "/tour/day2-31.jpg", alt: "Day 2 - Image 3" },
-      { id: 4, src: "/tour/day2-3.jpg", alt: "Day 2 - Image 4" },
-      { id: 5, src: "/tour/day2-4.jpg", alt: "Day 2 - Image 5" },
-      { id: 6, src: "/tour/day2-5.jpg", alt: "Day 2 - Image 6" },
-    ],
-  },
-  {
-    day: 3,
-    images: [
-      { id: 1, src: "/tour/day3-1.jpg", alt: "Day 3 - Image 1" },
-      { id: 2, src: "/tour/day3-2.jpg", alt: "Day 3 - Image 2" },
-      { id: 3, src: "/tour/day3-3.jpg", alt: "Day 3 - Image 3" },
-      { id: 4, src: "/tour/day3-4.jpg", alt: "Day 3 - Image 4" },
-      { id: 5, src: "/tour/day3-5.jpg", alt: "Day 3 - Image 5" },
-      { id: 6, src: "/tour/day3-6.jpg", alt: "Day 3 - Image 6" },
-      { id: 7, src: "/tour/day3-7.jpg", alt: "Day 3 - Image 7" },
-    ],
-  },
-  {
-    day: 4,
-    images: [
-      { id: 1, src: "/tour/day4-1.jpg", alt: "Day 4 - Image 1" },
-      { id: 2, src: "/tour/day4-2.jpg", alt: "Day 4 - Image 2" },
-      { id: 3, src: "/tour/day4-3.jpg", alt: "Day 4 - Image 3" },
-      { id: 4, src: "/tour/day4-4.jpg", alt: "Day 4 - Image 4" },
-      { id: 5, src: "/tour/day4-5.jpg", alt: "Day 4 - Image 5" },
-      { id: 7, src: "/tour/day4-7.jpg", alt: "Day 4 - Image 7" },
-      { id: 8, src: "/tour/day4-8.jpg", alt: "Day 4 - Image 8" },
-    ],
-  },
-];
+// Automatically import all images from the gallery folder
+const imageModules = import.meta.glob("../assets/gallery/*", { eager: true });
+const galleryImages = Object.entries(imageModules).map(([path, mod], idx) => {
+  // Extract filename for alt text
+  const filename = path.split("/").pop() || `Image ${idx + 1}`;
+  return {
+    id: filename,
+    src: (mod as { default: string }).default,
+    alt: filename,
+  };
+});
+
+galleryImages.sort((a, b) => a.id.localeCompare(b.id)); // Optional: sort alphabetically
 
 const Photos = () => {
   const [activeImage, setActiveImage] = useState<string | null>(null);
@@ -68,33 +30,20 @@ const Photos = () => {
   return (
     <Layout>
       <div className="max-w-6xl mx-auto px-6 py-12">
-        <h1 className="page-title animate-fade-in">Documented Images</h1>
-
-        <div className="space-y-12">
-          {photoDays.map((dayData, dayIndex) => (
+        <h1 className="page-title animate-fade-in">Gallery</h1>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          {galleryImages.map((image, idx) => (
             <div
-              key={dayData.day}
-              className="animate-fade-in"
-              style={{ animationDelay: `${dayIndex * 0.1}s` }}
+              key={image.id}
+              className="image-card aspect-square animate-fade-in"
+              style={{ animationDelay: `${idx * 0.05}s` }}
             >
-              <h2 className="day-title">Day {dayData.day}</h2>
-
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                {dayData.images.map((image, imageIndex) => (
-                  <div
-                    key={`${dayData.day}-${image.id}`}
-                    className="image-card aspect-square animate-fade-in"
-                    style={{ animationDelay: `${(dayIndex * 0.1) + (imageIndex * 0.05)}s` }}
-                  >
-                    <img
-                      src={image.src}
-                      alt={image.alt}
-                      className="w-full h-full object-cover cursor-pointer transition-transform duration-200 hover:scale-105"
-                      onClick={() => setActiveImage(image.src)}
-                    />
-                  </div>
-                ))}
-              </div>
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-full object-cover cursor-pointer transition-transform duration-200 hover:scale-105"
+                onClick={() => setActiveImage(image.src)}
+              />
             </div>
           ))}
         </div>
@@ -110,7 +59,7 @@ const Photos = () => {
         >
           <div className="max-w-4xl w-full" onClick={(e) => e.stopPropagation()}>
             <button
-              className="mb-4 text-white text-sm px-3 py-1 bg-black/40 rounded-md"
+              className="mb-4 text-sm px-3 py-1 bg-transparent border-b-2 border-transparent hover:border-black"
               onClick={() => setActiveImage(null)}
             >
               Close
