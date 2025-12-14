@@ -5,7 +5,7 @@ import Layout from "@/components/Layout";
 const companies = [
   { id: 1, name: "UP Business Incubator for IT", image: "/images/up.PNG" },
   { id: 2, name: "Rivan IT Cebu", image: "/images/rivan.PNG" },
-  { id: 3, name: "Dynata Phillippines INC.", image: "/images/dynata.PNG" },
+  { id: 3, name: "Dynata Phillippines INC.", image: "/images/dynata.jpg" },
   { id: 4, name: "Mata Technologies INC.", image: "/images/mata.PNG" },
   { id: 5, name: "T.A.R.S.I.E.R 117", image: "/images/tarsier.PNG" },
 ];
