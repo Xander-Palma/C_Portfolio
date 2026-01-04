@@ -19,3 +19,4 @@ I chose Information Technology as my field of study because I am curious about h
 };
 
 export default About;
+

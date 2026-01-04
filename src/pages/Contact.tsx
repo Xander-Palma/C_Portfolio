@@ -2,7 +2,7 @@ import Layout from "@/components/Layout";
 import { Mail, MapPin, Phone, Github, Linkedin, Facebook, Instagram } from "lucide-react";
 
 const contactInfo = [
-  { icon: Mail, label: "Email", value: "frank.cagadas@hcdc.edu.ph ", href: "mailto:xanderjyle.palma@hcdc.edu.ph" },
+  { icon: Mail, label: "Email", value: "frank.cagadas@hcdc.edu.ph", href: "mailto:frank.cagadas@hcdc.edu.ph" },
   { icon: Phone, label: "Phone", value: "+63 998 228 2974", href: "tel:+639982282974" },
   { icon: MapPin, label: "Location", value: "Davao City, Philippines", href: null },
 ];
